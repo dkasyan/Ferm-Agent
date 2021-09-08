@@ -7,14 +7,13 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+#migrate = Migrate(app, db)
+
+
+#APP Look viue
+
+
 
 
 if __name__ == '__main__':
     app.run()
-
-@app.shell_context_processor
-def make_shell_context():
-    return {
-        "db": db,
-        "Entry": models.Entry

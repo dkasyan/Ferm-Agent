@@ -2,7 +2,7 @@
 import os
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-
+DB_NAME = "Jenusz"
 
 class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY") or "remember-to-add-secret-key"
