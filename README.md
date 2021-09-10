@@ -1,1 +1,6 @@
 # Ferm-Agent
+
+# STEPS TO RUN APLICATION
+
+## CREATE SQLITE DATABASE
+$ sqlite3 install 

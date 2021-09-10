@@ -1,26 +1,31 @@
-import sqlalchemy
-from sqlalchemy.sql.sqltypes import DateTime
-from config import Config
+from sqlalchemy import create_engine, Column, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.sql.sqltypes import Boolean, DateTime, Integer
 
-from sqlalchemy import create_engine
-from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
-from sqlalchemy import inspect
+engine = create_engine("sqlite:///test_db.db")
+#from pdb import set_trace; set_trace()
+session = sessionmaker(bind=engine)()
 
+Base = declarative_base()
 
+class User(Base):
+    __tablename__ = "user"
+    username = Column(String, primary_key=True)
+    password = Column(String)
 
-def create_db_eng():
-    create_engine('sqlite:///BASE_DIR/testDB.db')
-    print("Stworzylem tabele")
-    metadata = MetaData()
-    books = Table('mesure', metadata,
-        Column('id', Integer, primary_key=True),
-        Column('pub_date', DateTime),
-        Column('sensor_type', String),
-        Column('sensor_value', String),
-        Column('online_status')
-        )
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
 
-    engine = create_engine('sqlite:///testDB.db')
-    metadata.create_all(engine)
+#class Mesure_log(Base):
+  #  __tablename__ = "mesure_log"
+ #   id = Column(Integer, primary_key=True)
+  #  pub_date = Column(DateTime) INTEGER
+  #  sensor_type = Column(String) TEXT
+  #  sensor_value = Column(Integer) REAL
+  #  online_status = Column(Boolean) 
 
-create_db_eng()
+user = User("Damian", "some_password")
+session.add(user)
+session.commit()
