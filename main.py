@@ -21,7 +21,7 @@ class User(Base):
 #class Mesure_log(Base):
   #  __tablename__ = "mesure_log"
  #   id = Column(Integer, primary_key=True)
-  #  pub_date = Column(DateTime) INTEGER
+  #  pub_date = Column(DateTime) TEXT
   #  sensor_type = Column(String) TEXT
   #  sensor_value = Column(Integer) REAL
   #  online_status = Column(Boolean) 
